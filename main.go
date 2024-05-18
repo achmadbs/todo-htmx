@@ -2,12 +2,15 @@ package main
 
 import (
 	"html/template"
+	"htmx-tailwind/config"
 	"log"
 	"net/http"
 	"path/filepath"
 )
 
 func main() {
+	defer config.CloseDB()
+
 	http.HandleFunc("/", handleWithTemplate("index.html"))
 
 	// Serve static files for assets such as css/image/js/fonts or any other resources that clients web browser needs to access.
